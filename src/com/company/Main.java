@@ -12,13 +12,13 @@ public class Main {
     static final Scanner teclat = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String[][] elementsCarta = new String[20][];
+        String[][] elementsCarta = new String[20][20];
         mostrarMenu();
         int opcio = obtenerOpcio();
         switch (opcio) {
             case OPCIO_INTRODUIR_ELEMENTS:
-                elementsCarta = obtenerElementsCarta(elementsCarta);
-                
+                obtenerElementsCarta(elementsCarta);
+
             case LLISTAR_ELEMENTS:
                 llistarElements(elementsCarta);
                 
@@ -32,18 +32,17 @@ public class Main {
         
     }
 
-    public static String[][] obtenerElementsCarta(String[][] elementsCarta) {
-        String missatge = "¿Cuantos elementos quieres añadir";
-        int elementos = demanarEnterUsuari(missatge);
+    public static void obtenerElementsCarta(String[][] elementsCarta) {
         System.out.println("Introduce nuevos elementos en la carta: ");
         for (int i = 0; i < elementsCarta.length; i++) {
             for (int j = 0; j < elementsCarta[i].length; j++) {
-                System.out.println("Elemento " + i + ": ");
-                String elemento = teclat.nextLine();
-                elementsCarta[i][j] = elemento;
+                if (elementsCarta[i] == null) {
+                    System.out.println("Elemento " + i + ": ");
+                    String elemento = teclat.nextLine();
+                    elementsCarta[i][j] = elemento;
+                }
             }
         }
-        return elementsCarta;
     }
     
     public static void llistarElements(String[][] array) {
