@@ -12,15 +12,22 @@ public class Main {
     static final Scanner teclat = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String[][] elementsCarta = new String[20][];
+<<<<<<< HEAD
+        String[] elementsCarta = new String[20];
+=======
+        String[][] elementsCarta = new String[20][20];
+>>>>>>> 153d8f64c8e16cc71ff545aaf6c1fdd08a9d457e
         mostrarMenu();
         int opcio = obtenerOpcio();
         switch (opcio) {
             case OPCIO_INTRODUIR_ELEMENTS:
-                elementsCarta = obtenerElementsCarta(elementsCarta);
-                
+                obtenerElementsCarta(elementsCarta);
+
             case LLISTAR_ELEMENTS:
                 llistarElements(elementsCarta);
+
+            case MODIFICAR_ELEMENT:
+                cambiarElement(elementsCarta);
                 
         }
 
@@ -32,18 +39,17 @@ public class Main {
         
     }
 
-    public static String[][] obtenerElementsCarta(String[][] elementsCarta) {
-        String missatge = "¿Cuantos elementos quieres añadir";
-        int elementos = demanarEnterUsuari(missatge);
+    public static void obtenerElementsCarta(String[][] elementsCarta) {
         System.out.println("Introduce nuevos elementos en la carta: ");
         for (int i = 0; i < elementsCarta.length; i++) {
             for (int j = 0; j < elementsCarta[i].length; j++) {
-                System.out.println("Elemento " + i + ": ");
-                String elemento = teclat.nextLine();
-                elementsCarta[i][j] = elemento;
+                if (elementsCarta[i] == null) {
+                    System.out.println("Elemento " + i + ": ");
+                    String elemento = teclat.nextLine();
+                    elementsCarta[i][j] = elemento;
+                }
             }
         }
-        return elementsCarta;
     }
     
     public static void llistarElements(String[][] array) {
@@ -76,4 +82,16 @@ public class Main {
         } while (opcion < 1 || opcion > 3);
         return opcion;
     }
+<<<<<<< HEAD
+
+    public static void cambiarElement(String[] array){
+        System.out.print("Que elemento quieres modificar? ");
+        int num = teclat.nextInt();
+        System.out.println("Que quieres cambiar?");
+        String frase = teclat.nextLine();
+        array[num] = frase;
+    }
 }
+=======
+}
+>>>>>>> 153d8f64c8e16cc71ff545aaf6c1fdd08a9d457e
