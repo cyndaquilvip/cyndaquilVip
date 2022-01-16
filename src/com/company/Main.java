@@ -12,7 +12,7 @@ public class Main {
     static final Scanner teclat = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String[][] elementsCarta = new String[20][];
+        String[] elementsCarta = new String[20];
         mostrarMenu();
         int opcio = obtenerOpcio();
         switch (opcio) {
@@ -21,6 +21,9 @@ public class Main {
                 
             case LLISTAR_ELEMENTS:
                 llistarElements(elementsCarta);
+
+            case MODIFICAR_ELEMENT:
+                cambiarElement(elementsCarta);
                 
         }
 
@@ -75,5 +78,13 @@ public class Main {
             }
         } while (opcion < 1 || opcion > 3);
         return opcion;
+    }
+
+    public static void cambiarElement(String[] array){
+        System.out.print("Que elemento quieres modificar? ");
+        int num = teclat.nextInt();
+        System.out.println("Que quieres cambiar?");
+        String frase = teclat.nextLine();
+        array[num] = frase;
     }
 }
